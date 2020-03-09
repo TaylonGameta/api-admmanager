@@ -16,4 +16,6 @@ router.post('/bp/add', user.auth, bp.add)
 
 router.post('/bp/listall', user.auth, bp.listAll)
 
+router.post('/bp/listbytype', user.auth, bp.listByType)
+
 module.exports = router
