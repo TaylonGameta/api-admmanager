@@ -14,4 +14,6 @@ router.get('/', user.auth, (req, res) => {res.send(`you id is ${req.body.id} \n 
 
 router.post('/bp/add', user.auth, bp.add)
 
+router.post('/bp/listall', user.auth, bp.listAll)
+
 module.exports = router
