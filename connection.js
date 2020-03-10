@@ -14,13 +14,6 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
     console.log('The solution is: ', results[0].solution);
 })
 
-connection.query(`
-    ALTER TABLE b_patrimonial_item
-    add FOREIGN KEY(user_id) REFERENCES users(id);
-    
-`, (err, results, fields)=>{
-    console.log(err)
-})
 
 
 console.log(credentials.user);
