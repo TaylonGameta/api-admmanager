@@ -32,6 +32,7 @@ user = {
     },
     auth : (req, res, next)=>{
         const {authorization} = req.headers
+        if (!authorization) res.send("unauthorized")
         const [bearer, token] = authorization.split(' ')
         try{
             const decoded = jwt.verify(token,"codigoindestrutivel")
