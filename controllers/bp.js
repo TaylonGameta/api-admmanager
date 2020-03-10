@@ -5,7 +5,7 @@ bp = {
         const {id, name, value, type} = req.body
         const sql = `INSERT INTO b_patrimonial_item(user_id, b_name, b_date, b_value, b_type) VALUES(?,?, NOW(), ?, ?)`
         connection.query(sql, [id, name, value, type], (err, result, field)=>{
-            if(err) res.send("something went wrong")
+            if(err) res.send(err)
             if(result) res.send("item added with success")
         })
     },
