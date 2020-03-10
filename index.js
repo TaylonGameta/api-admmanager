@@ -8,6 +8,6 @@ app.use(cors())
 app.use(bodyparser.json())
 app.use('/', router)
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log("http://localhost:3000")
 })
