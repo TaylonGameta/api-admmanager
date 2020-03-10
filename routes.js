@@ -3,7 +3,7 @@ const router = express.Router()
 
 const user = require('./controllers/user')
 const bp = require('./controllers/bp')
-const aux = require('./controllers/aux')
+const aux = require('./controllers/auxiliar')
 
 router.post('/user/register', user.register)
 
@@ -19,6 +19,6 @@ router.post('/bp/listall', user.auth, bp.listAll)
 
 router.post('/bp/listbytype', user.auth, bp.listByType)
 
-router.get('/aux/date', aux.now)
+router.get('/auxiliar/date', auxiliar.now)
 
 module.exports = router
