@@ -1,5 +1,5 @@
 const mysql = require('mysql')
-const credentials = JSON.parse(require('./config'))
+//const credentials = JSON.parse(require('./config'))
 
 const connection = mysql.createPool({
     host     : "us-cdbr-iron-east-04.cleardb.net",
