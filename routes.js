@@ -11,13 +11,15 @@ router.post('/user/login', user.login)
 
 router.post('/user/auth', user.auth)
 
-router.get('/', user.auth, (req, res) => {res.send(`you id is ${req.body.id} \n you name is ${req.body.username}`)})
+router.get('/', user.auth, (req, res) => res.send({msg: "Taylon eh pica"}))
 
 router.post('/bp/add', user.auth, bp.add)
 
 router.get('/bp/listall', user.auth, bp.listAll)
 
 router.get('/bp/listbytype', user.auth, bp.listByType)
+
+router.post('/bp/updatebpvalue', user.auth, bp.updateBpValue)
 
 router.get('/auxiliar/date', auxiliar.now)
 

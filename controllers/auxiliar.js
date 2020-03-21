@@ -6,7 +6,7 @@ auxiliar = {
             day : date.getDate(),
             month : date.getMonth()
         }
-        res.send(result)
+        res.send({result})
     }
 }
 

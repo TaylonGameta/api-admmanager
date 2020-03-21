@@ -8,7 +8,8 @@ user = {
 
         connection.query(sql, [username, password, email], (err, results, fields)=>{
             if (err) throw err
-            else res.send("user created")
+            else res.send({success : "user created"})
+            
         })
     },
     login : (req, res)=>{
@@ -24,25 +25,27 @@ user = {
                     id : results[0].id
                 }, 'codigoindestrutivel')
 
-                res.send(token)
+                res.send({token})
             }else{
-                res.send("credentials doesnt match")
+                res.send({error : "credentials doesnt match"})
             }
         })
     },
     auth : (req, res, next)=>{
         const {authorization} = req.headers
-        if (!authorization) res.send("unauthorized")
-        const [bearer, token] = authorization.split(' ')
-        try{
-            const decoded = jwt.verify(token,"codigoindestrutivel")
-            if(decoded){
-                req.body.id = decoded.id
-                req.body.username = decoded.username
-                next()
+        if (!authorization) res.send({error : "unauthorized"})
+        else{
+            try{
+                const [bearer, token] = authorization.split(' ')
+                const decoded = jwt.verify(token,"codigoindestrutivel")
+                if(decoded){
+                    req.body.id = decoded.id
+                    req.body.username = decoded.username
+                    next()
+                }
+            }catch(e){
+                if(e) res.send({error : "unauthorized"})
             }
-        }catch(e){
-            if(e) res.send("unauthorized")
         }
     }
 }
