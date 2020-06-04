@@ -14,7 +14,7 @@ user = {
     },
     login : (req, res)=>{
         const {username, password} = req.body
-        const sql = `SELECT username, id FROM users WHERE username = ? AND password =?`
+        const sql = `SELECT username, id, linguage FROM users WHERE username = ? AND password =?`
 
         connection.query(sql, [username, password], (err, results, fields)=>{
             if(err) throw err
@@ -22,7 +22,8 @@ user = {
             if(results.length > 0){
                 const token = jwt.sign({
                     username : results[0].username,
-                    id : results[0].id
+                    id : results[0].id,
+                    linguage: results[0].linguage
                 }, 'codigoindestrutivel')
 
                 res.send({token})
@@ -41,6 +42,7 @@ user = {
                 if(decoded){
                     req.body.id = decoded.id
                     req.body.username = decoded.username
+                    req.body.linguage = decoded.linguage
                     next()
                 }
             }catch(e){

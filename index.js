@@ -10,5 +10,5 @@ app.use('/', router)
 
 
 app.listen(process.env.PORT || 4000, ()=>{
-    console.log("http://localhost:3000")
+    console.log("running at http://localhost:4000")
 })
